@@ -3,3 +3,4 @@ node_modules/
 /nohup.out
 *.log
 log/
+package-lock.json
