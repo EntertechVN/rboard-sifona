@@ -30,22 +30,13 @@ setInterval(function () {
 
 // Log setting
 const winston = require('winston');
-const DailyRotateFile = require('winston-daily-rotate-file');
-
-var transport = new (winston.transports.DailyRotateFile)({
-    filename: 'log/system-%DATE%.log',
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
-    maxSize: '100m',
-    maxFiles: '90d'
-});
-
 const logger = winston.createLogger({
-    level: 'info',
+    level: 'error', // info to enable log
     format: winston.format.simple(),
     defaultMeta: '',
     transports: [
-        transport
+        new winston.transports.File({ filename: 'error.log', level: 'error' }),
+        new winston.transports.File({ filename: 'system.log' })
     ]
 });
 
